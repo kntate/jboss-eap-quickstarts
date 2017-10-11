@@ -41,7 +41,7 @@ public class HelloWorld {
     @Produces("application/json")
     public String getHelloWorldJSON(@PathParam("name") String name, @Context HttpHeaders headers) {
         System.out.println("name: " + name);
-        System.out.println("headers: " + headers);
+        System.out.println("headers: " + headers.getRequestHeaders());
         return "{\"result\":\"" + helloService.createHelloMessage(name) + "\"}";
     }
 
