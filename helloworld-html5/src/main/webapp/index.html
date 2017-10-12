@@ -30,12 +30,9 @@ $( document ).ready( function() {
 
         result.removeClass( 'invalid' );
 
-        if( !name || !name.length ) {
-            result.addClass( 'invalid' ).text( 'A name is required!' );
-            return;
-        }
+
         //console.log("clicked: " + name);
-        $.ajax( 'hello/json/' + name, {
+        $.ajax( 'hello/json/oauth' , {
             dataType:'json',
             data:{},
             type:'POST',
@@ -54,12 +51,11 @@ $( document ).ready( function() {
 <body>
 <img src="http://blockapps.net/wp-content/uploads/2017/02/RedHatBlockApps-page-images-04.png" alt="Shadowman" >
 <img src="https://oauth.net/images/oauth-2-sm.png" alt="OpenShift" align="right"> </br></br>
-<h2>OAuth Proxy GetUser!</h2>
+<img src="pharma_logo.png" alt="OpenShift"> </br></br>
+<h2>OAuth Proxy!</h2>
 <form name="theForm">
     <fieldset>
-        <label for="name" id="name_label">Name</label>
-        <input name="name" id="name" type="text" required placeholder="Your Name"/>
-        <input type="submit" id="sayHello" value="Say Hello"/><span id="result"></span>
+        <input type="submit" id="sayHello" value="Hello user: "/><span id="result"></span>
     </fieldset>
 </form>
 
