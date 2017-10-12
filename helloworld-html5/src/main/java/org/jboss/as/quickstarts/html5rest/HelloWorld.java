@@ -42,8 +42,9 @@ public class HelloWorld {
     @Produces("application/json")
     public String getHelloWorldJSON(@PathParam("name") String name, @Context HttpHeaders headers) {
         System.out.println("name: " + name);
-        String user = headers.getRequestHeader("X-Forwarded-User").get(0);;
-        return "{\"result\":\"" + helloService.createHelloMessage(user) + "\"}";
+        String user = headers.getRequestHeader("X-Forwarded-User").get(0);
+        String email = headers.getRequestHeader("X-Forwarded-Email").get(0);;
+        return "{\"result\":\"" + helloService.createHelloMessage(user) + " with email: " + email + "\"}";
     }
 
     @POST
