@@ -23,6 +23,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
+import java.util.List;
 
 /**
  * A simple REST service which is able to say hello to someone using HelloService Please take a look at the web.xml where JAX-RS
@@ -41,8 +42,8 @@ public class HelloWorld {
     @Produces("application/json")
     public String getHelloWorldJSON(@PathParam("name") String name, @Context HttpHeaders headers) {
         System.out.println("name: " + name);
-        System.out.println("headers: " + headers.getRequestHeaders());
-        return "{\"result\":\"" + helloService.createHelloMessage(name) + "\"}";
+        String user = headers.getRequestHeader("X-Forwarded-User").get(0);;
+        return "{\"result\":\"" + helloService.createHelloMessage(user) + "\"}";
     }
 
     @POST
